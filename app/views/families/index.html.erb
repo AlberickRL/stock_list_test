@@ -1,0 +1,32 @@
+<main>
+  <section class="py-5 text-center container">
+    <div class="row">
+      <div class="col-2">
+        <%= link_to 'New Family', new_family_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light text-decoration-none">Family List</h1>
+      <div class="row pt-5">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Family Name</th>
+            <th scope="col">Family Members</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @families.each do |family| %>
+        <tr>
+          <td class="fw-bold text-primary"> <%= family.family_name %> </td>
+          <td class="fw-bold text-primary"> <%= family.family_members %> </td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    </div>
+  </section>
+</main>
