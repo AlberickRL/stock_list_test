@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row py-5">
+    <h2 class="text-secondary mt-3">Registra la Ayuda Social</h2>
+    <%= form_for @family do |family_form| %>
+
+      <div class="row">
+        <div class="form-group col-6 my-3">
+          <%= family_form.label :family_name %>
+          <%= family_form.text_field :family_name, class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="form-group col-6 my-3">
+          <%= family_form.label :family_members %>
+          <%= family_form.text_field :family_members, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= family_form.fields_for :packages, Package.new do |package_form| %>
+        <%= package_form.hidden_field :delivered, value: true %>
+      <% end %>
+    <%= family_form.submit 'Asignar', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

@@ -3,28 +3,28 @@ class FamiliesController < ApplicationController
     @families = Family.all
   end
 
-  def new
-    @families = Family.new
+  def edit
+    @family = Family.find(params[:id])
   end
 
-  def create
-    @families = Family.new
-    return on_create_sucess if @families.update(families_params)
+  def update
+    @family = Family.find(params[:id])
+    return on_update_sucess if @family.update(families_params)
 
-    on_create_failed
+    on_update_failed
   end
 
   private
 
-  def on_create_sucess
-    redirect_to families_path, success: 'Family added successfully'
+  def on_update_sucess
+    redirect_to families_path, success: 'Ayuda Social Asignada'
   end
 
-  def on_create_failed
-    render :new, danger: 'Failed to create new Family'
+  def on_update_failed
+    render :index, alert: 'No se pudo asignar la ayuda social'
   end
 
   def families_params
-    params.require(:family).permit(:family_members, :family_name)
+    params.require(:family).permit(:family_members, :family_name, packages_attributes: [:id, :delivered])
   end
 end

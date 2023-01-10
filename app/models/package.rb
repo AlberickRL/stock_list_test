@@ -1,3 +1,3 @@
 class Package < ApplicationRecord
-  belongs_to :family
+  has_one :family
 end
